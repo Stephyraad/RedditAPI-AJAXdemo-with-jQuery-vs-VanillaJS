@@ -2,14 +2,13 @@
 	var domainForm = document.getElementById('domainform');
 	
 	function createXMLHttp() {
-
 		if(typeof XMLHttpRequest !== undefined) {
 			return new XMLHttpRequest;
 		} else if(window.ActiveXObject) {
 			// for older browsers, IE6 and older
 			 var ieXMLHttpVersions = ['MSXML2.XMLHttp.5.0', 'MSXML2.XMLHttp.4.0', 'MSXML2.XMLHttp.3.0', 'MSXML2.XMLHttp', 'Microsoft.XMLHttp'],
         xmlHttp;
-    	//In this array we are starting from the first element (newest version) and trying to create it. If there is an
+    	//In this array we are starting from the first element (newest version) and trying to create it.
     	for (var i = 0; i < ieXMLHttpVersions.length; i++) {
 	      try {
 	        xmlHttp = new ActiveXObject(ieXMLHttpVersions[i]);
@@ -31,13 +30,13 @@
 		xhr.onreadystatechange = function() {
     	if (xhr.readyState == 4 && xhr.status == 200) {
       	var data = JSON.parse(xhr.responseText)
-      	console.log(data.data)
-      	appendToDom(data.children)
+      	appendToDom(data.data.children)
     	}
   	};
 
-  	document.getElementById("content-returned").innerHTML = "Fetching Reddit data for " + input;
 		xhr.send(null);
+
+    document.getElementById("content-returned").innerHTML = "Fetching Reddit data for " + input;
 
 		function appendToDom(el) {
     	var html = '<ul class="linklist">\n';
