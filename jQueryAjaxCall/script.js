@@ -10,8 +10,9 @@
     	success: function(data) {
     		// console.log(JSON.stringify(data.data.children));
     		appendToDom(data.data.children);
+            //error we can pass in data.children instead of data.data.children
     	},
-    	error: function (xhr, ajaxOptions, thrownError) {
+    	error: function (xhr, thrownError) {
         console.log(xhr.status);
         console.log(thrownError);
       }
